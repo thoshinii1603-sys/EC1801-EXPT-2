@@ -21,47 +21,67 @@ File name	Purpose
 logic_gates.v	Logic-gate RTL
 logic_gates_tb.v	All input combinations and VCD generation
  # Verilog  Program
+
 module basic_gates(
+
 input a,b,
+
 output y_and,y_or,y_not
+
 );
 
+
 assign y_and = a & b;
+
 assign y_or = a | b;
+
 assign y_not = ~a;
 
+
 endmodule
+
 # **Test Bench Program**
+
 module tb2;
 
 reg a,b;
+
 wire y_and,y_or,y_not;
 
+
 basic_gates uut(
+
 .a(a),
+
 .b(b),
+
 .y_and(y_and),
+
 .y_or(y_or),
+
 .y_not(y_not)
+
 );
 
 initial begin
 
 $monitor("a=%b b=%b AND=%b OR=%b NOT=%b",
+
 a,b,y_and,y_or,y_not);
 
 a=0; b=0; #10;
+
 a=0; b=1; #10;
+
 a=1; b=0; #10;
+
 a=1; b=1; #10;
 
 $finish;
+
 end
 
 endmodule
-
-
-
  
 <img width="940" height="318" alt="image" src="https://github.com/user-attachments/assets/8a343bdb-ffb4-4aac-8b88-cf59eca374a8" />
 
