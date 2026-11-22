@@ -63,11 +63,11 @@ basic_gates uut(
 
 );
 
+
 initial begin
 
-$monitor("a=%b b=%b AND=%b OR=%b NOT=%b",
 
-a,b,y_and,y_or,y_not);
+$monitor("a=%b b=%b AND=%b OR=%b NOT=%b",a,b,y_and,y_or,y_not);
 
 a=0; b=0; #10;
 
@@ -77,9 +77,11 @@ a=1; b=0; #10;
 
 a=1; b=1; #10;
 
+
 $finish;
 
 end
+
 
 endmodule
  
