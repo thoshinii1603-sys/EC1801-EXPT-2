@@ -21,9 +21,44 @@ File name	Purpose
 logic_gates.v	Logic-gate RTL
 logic_gates_tb.v	All input combinations and VCD generation
  # Verilog  Program
+module basic_gates(
+input a,b,
+output y_and,y_or,y_not
+);
 
+assign y_and = a & b;
+assign y_or = a | b;
+assign y_not = ~a;
+
+endmodule
 # **Test Bench Program**
+module tb2;
 
+reg a,b;
+wire y_and,y_or,y_not;
+
+basic_gates uut(
+.a(a),
+.b(b),
+.y_and(y_and),
+.y_or(y_or),
+.y_not(y_not)
+);
+
+initial begin
+
+$monitor("a=%b b=%b AND=%b OR=%b NOT=%b",
+a,b,y_and,y_or,y_not);
+
+a=0; b=0; #10;
+a=0; b=1; #10;
+a=1; b=0; #10;
+a=1; b=1; #10;
+
+$finish;
+end
+
+endmodule
 
 
 
@@ -79,6 +114,7 @@ The design was compiled and simulated using Synopsys VCS, and the functionality 
 Output
 # OUTPUT
 
+<img width="1920" height="1080" alt="Screenshot (38)" src="https://github.com/user-attachments/assets/80ec22eb-a2df-463b-a8f6-e30f20f220e9" />
 
  
 # Viva-Voce Questions
